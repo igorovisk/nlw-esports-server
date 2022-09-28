@@ -1,0 +1,41 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "darwin"]
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Game {
+  id        String   @id @unique @default(uuid())
+  title     String
+  bannerURL String
+  ads       Ad[]
+  createdAt DateTime @default(now())
+
+  //essa anotacao serve pra modificar o nome da tabela no banco de dados
+  @@map("games")
+}
+
+model Ad {
+  id              String   @id @default(uuid())
+  gameId          String
+  description     String
+  username        String
+  yearsOfPlaying  Int
+  discordUsername String
+  weekdaysPlayed  String
+  hoursStart      String
+  hoursEnd        String
+  usesVoiceChat   Boolean  @default(false)
+  createdAt       DateTime @default(now())
+  Game            Game     @relation(fields: [gameId], references: [id])
+
+  //essa anotacao serve pra modificar o nome da tabela no banco de dados
+  @@map("ads")
+}
