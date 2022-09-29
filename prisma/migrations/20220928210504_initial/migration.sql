@@ -14,7 +14,7 @@ CREATE TABLE `ads` (
     `id` VARCHAR(191) NOT NULL,
     `gameId` VARCHAR(191) NOT NULL,
     `description` VARCHAR(191) NOT NULL,
-    `userName` VARCHAR(191) NOT NULL,
+    `username` VARCHAR(191) NOT NULL,
     `yearsOfPlaying` INTEGER NOT NULL,
     `discordUsername` VARCHAR(191) NOT NULL,
     `weekdaysPlayed` VARCHAR(191) NOT NULL,

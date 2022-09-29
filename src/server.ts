@@ -1,8 +1,14 @@
 const express = require("express");
 const app = express();
+const cors = require("cors");
 import routes from "./routes/index";
 import bodyParser from "body-parser";
 
+app.use(
+   cors({
+      origin: "*",
+   })
+);
 app.use(bodyParser.json());
 
 app.use("/games", routes.gamesRoutes);

@@ -21,15 +21,15 @@ const main = async () => {
          config
       );
       const popularGames = requestPopularGames.data.data;
-
       const seedData = popularGames.map((game) => {
+         const banner = game.box_art_url.replace("{width}x{height}", "140x280");
          return {
-            id: game.id,
+            // id: game.id,
             title: game.name,
-            bannerURL: game.box_art_url,
+            bannerURL: banner,
          };
       });
-      // console.log(seedData, "seed");
+
       const gameRes = await prisma.game.createMany({
          data: seedData,
       });
@@ -37,8 +37,8 @@ const main = async () => {
       const adsRes = await prisma.ad.createMany({
          data: [
             {
-               gameId: "0",
-               description: "Procuro alguém pra jogar Minecraft comigo",
+               gameId: "32982",
+               description: "Procuro alguém pra jogar GTA comigo",
                username: "Igor Borgio",
                yearsOfPlaying: 10,
                discordUsername: "igorovisk",
@@ -49,8 +49,6 @@ const main = async () => {
             },
          ],
       });
-
-      console.log(adsRes, "ads res");
    } catch (err) {
       console.log(err);
    }
