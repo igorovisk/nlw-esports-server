@@ -22,7 +22,7 @@ const main = async () => {
       );
       const popularGames = requestPopularGames.data.data;
       const seedData = popularGames.map((game) => {
-         const banner = game.box_art_url.replace("{width}x{height}", "140x280");
+         const banner = game.box_art_url.replace("{width}x{height}", "180x240");
          return {
             // id: game.id,
             title: game.name,
@@ -37,7 +37,7 @@ const main = async () => {
       const adsRes = await prisma.ad.createMany({
          data: [
             {
-               gameId: "32982",
+               gameId: "03211ab4-50a2-4565-9e5c-f72b15da8ac2",
                description: "Procuro alguém pra jogar GTA comigo",
                username: "Igor Borgio",
                yearsOfPlaying: 10,
